@@ -20,7 +20,19 @@ Future<void> main(List<String> args) async {
 bool _isException(File file, List<String> exceptions) {
   final String uri = file.uri.toString();
 
-  return exceptions.contains(uri);
+  if (exceptions.contains(uri)) {
+    return true;
+  } else {
+    for (final String exception in exceptions) {
+      final RegExp exp = RegExp(exception);
+
+      if (exp.hasMatch(uri)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
 
 List<String> _exceptions(List<String> args) {
