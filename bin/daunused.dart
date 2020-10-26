@@ -11,13 +11,16 @@ Future<void> main(List<String> args) async {
   final List<File> files = await _getFiles(root);
 
   for (final File file in files) {
-    final String uri = file.uri.toString();
-
-    if (!exceptions.contains(uri) &&
-        await _isNotUsed(file, files, exceptions)) {
+    if (!_isException(file, exceptions) && await _isNotUsed(file, files)) {
       print(file.uri);
     }
   }
+}
+
+bool _isException(File file, List<String> exceptions) {
+  final String uri = file.uri.toString();
+
+  return exceptions.contains(uri);
 }
 
 List<String> _exceptions(List<String> args) {
@@ -48,8 +51,7 @@ Future<List<File>> _getFiles(Directory root) async {
   return files;
 }
 
-Future<bool> _isNotUsed(
-    File file, List<File> files, List<String> exceptions) async {
+Future<bool> _isNotUsed(File file, List<File> files) async {
   final String fileName = basename(file.path);
 
   for (final File currentFile in files) {
@@ -66,7 +68,8 @@ Future<bool> _isUsed(String fileName, File file) async {
   final List<String> lines = content.split('\n');
 
   for (final String line in lines) {
-    if (line.startsWith('import ') && (line.endsWith('$fileName\';'))) {
+    if ((line.startsWith('import ') || line.startsWith('part ')) &&
+        (line.endsWith('$fileName\';'))) {
       return true;
     }
   }

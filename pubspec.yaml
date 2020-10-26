@@ -1,6 +1,6 @@
 name: daunused
 description: A Flutter package that checks for unused files in your project.
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/mauriciotogneri/daunused
 
 environment:
