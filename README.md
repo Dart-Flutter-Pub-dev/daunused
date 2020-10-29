@@ -1,6 +1,6 @@
 # Daunused
 
-A *Flutter* package that checks for unused files in your project.
+A *Dart* package that checks for unused files in your project.
 
 ## Installation
 
@@ -8,7 +8,7 @@ Add the following dependency to your `pubspec.yaml`:
 
 ```yaml
 dev_dependencies:
-  daunused: ^1.1.0
+  daunused: ^1.2.0
 ```
 
 #### Run the checker
