@@ -4,4 +4,4 @@ version: 1.2.0+1
 homepage: https://github.com/mauriciotogneri/daunused
 
 environment:
-  sdk: ">=2.9.0 <3.0.0"
+  sdk: ">=2.10.0 <3.0.0"
