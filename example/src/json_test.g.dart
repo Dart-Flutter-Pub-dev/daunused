@@ -7,7 +7,7 @@ part of 'json_test.dart';
 // **************************************************************************
 
 JsonTest _$JsonTestFromJson(Map<String, dynamic> json) {
-  return JsonTest(json['id'] as String);
+  return JsonTest(json['id'] as String? ?? '');
 }
 
 Map<String, dynamic> _$JsonTestToJson(JsonTest instance) => <String, dynamic>{
