@@ -12,7 +12,7 @@ Future<void> main(List<String> args) async {
 
   for (final File file in files) {
     if (!_isException(file, exceptions) && await _isNotUsed(file, files)) {
-      print(file.uri);
+      stderr.writeln('\x1B[31m${file.uri}\x1B[0m');
     }
   }
 }

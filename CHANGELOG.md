@@ -13,3 +13,11 @@
 ## [1.3.0] - 2021-03-07
 
 * Added support for null safety
+
+## [1.4.0] - 2024-02-07
+
+* Improved logging
+
+## [1.4.1] - 2024-02-07
+
+* Improved logging

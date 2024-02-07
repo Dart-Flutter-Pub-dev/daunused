@@ -8,7 +8,7 @@ Add the following dependency to your `pubspec.yaml`:
 
 ```yaml
 dev_dependencies:
-  daunused: ^1.3.0
+  daunused: ^1.4.1
 ```
 
 #### Run the checker

@@ -2,5 +2,5 @@
 
 set -e
 
-flutter format ./lib
+dart format lib
 flutter packages pub publish
