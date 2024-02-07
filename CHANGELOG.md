@@ -21,3 +21,7 @@
 ## [1.4.1] - 2024-02-07
 
 * Improved logging
+
+## [1.5.0] - 2024-02-07
+
+* Removed dependency

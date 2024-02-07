@@ -3,7 +3,6 @@
 library daunused;
 
 import 'dart:io';
-import 'package:path/path.dart';
 
 Future<void> main(List<String> args) async {
   final Directory root = Directory(args[0]);
@@ -52,7 +51,7 @@ Future<List<File>> _getFiles(Directory root) async {
   for (final FileSystemEntity entity in list) {
     if (entity is File) {
       final File file = File(entity.path);
-      final String fileName = basename(file.path);
+      final String fileName = _basename(file);
 
       if (fileName.endsWith('.dart')) {
         files.add(file);
@@ -64,7 +63,7 @@ Future<List<File>> _getFiles(Directory root) async {
 }
 
 Future<bool> _isNotUsed(File file, List<File> files) async {
-  final String fileName = basename(file.path);
+  final String fileName = _basename(file);
 
   for (final File currentFile in files) {
     if (await _isUsed(fileName, currentFile)) {
@@ -88,3 +87,6 @@ Future<bool> _isUsed(String fileName, File file) async {
 
   return false;
 }
+
+String _basename(File file) =>
+    Uri.parse(file.path).path.split(Platform.pathSeparator).last;
