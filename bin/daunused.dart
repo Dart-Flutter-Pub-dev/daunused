@@ -77,15 +77,38 @@ Future<bool> _isNotUsed(File file, List<File> files) async {
 Future<bool> _isUsed(String fileName, File file) async {
   final String content = await file.readAsString();
   final List<String> lines = content.split('\n');
+  final List<String> imports = _filesImported(lines);
 
-  for (final String line in lines) {
-    if ((line.startsWith('import ') || line.startsWith('part ')) &&
-        (line.endsWith('$fileName\';'))) {
+  for (final String fileImported in imports) {
+    if (fileImported.contains(fileName)) {
       return true;
     }
   }
 
   return false;
+}
+
+List<String> _filesImported(List<String> lines) {
+  final List<String> result = <String>[];
+
+  for (final String line in lines) {
+    if (_isImportLine(line.trim())) {
+      result.add(line.trim());
+    }
+  }
+
+  return result;
+}
+
+bool _isImportLine(String line) {
+  if (line.startsWith('import ') || line.startsWith('part ')) {
+    return true;
+  } else if (line.startsWith('if (') &&
+      (line.endsWith('.dart\'') || line.endsWith('.dart\';'))) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 String _basename(File file) =>

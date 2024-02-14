@@ -25,3 +25,7 @@
 ## [1.5.0] - 2024-02-07
 
 * Removed dependency
+
+## [1.6.0] - 2024-02-14
+
+* Fix ignoring conditional imports
