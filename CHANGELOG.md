@@ -29,3 +29,7 @@
 ## [1.6.0] - 2024-02-14
 
 * Fix ignoring conditional imports
+
+## [1.6.1] - 2024-02-14
+
+* Fix typo
