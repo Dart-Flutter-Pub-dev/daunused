@@ -6,24 +6,24 @@ import 'dart:io';
 
 Future<void> main(List<String> args) async {
   final Directory root = Directory(args[0]);
-  final List<String> exceptions = _exceptions(args);
+  final List<String> excludedFiles = _excludedFiles(args);
   final List<File> files = await _getFiles(root);
 
   for (final File file in files) {
-    if (!_isException(file, exceptions) && await _isNotUsed(file, files)) {
+    if (!_isExcluded(file, excludedFiles) && await _isNotUsed(file, files)) {
       stderr.writeln('\x1B[31m${file.uri}\x1B[0m');
     }
   }
 }
 
-bool _isException(File file, List<String> exceptions) {
+bool _isExcluded(File file, List<String> excludedFiles) {
   final String uri = file.uri.toString();
 
-  if (exceptions.contains(uri)) {
+  if (excludedFiles.contains(uri)) {
     return true;
   } else {
-    for (final String exception in exceptions) {
-      final RegExp exp = RegExp(exception);
+    for (final String excludedFile in excludedFiles) {
+      final RegExp exp = RegExp(excludedFile);
 
       if (exp.hasMatch(uri)) {
         return true;
@@ -34,7 +34,7 @@ bool _isException(File file, List<String> exceptions) {
   }
 }
 
-List<String> _exceptions(List<String> args) {
+List<String> _excludedFiles(List<String> args) {
   final List<String> result = <String>[];
 
   for (int i = 1; i < args.length; i++) {

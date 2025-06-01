@@ -13,7 +13,7 @@ dev_dependencies 1.7.0
 #### Run the checker
 
 ```bash
-flutter pub run daunused:daunused.dart ROOT_FOLDER [EXCEPTION1 EXCEPTION2 ...]
+flutter pub run daunused:daunused.dart ROOT_FOLDER [EXCLUDED_FILE_1 EXCLUDED_FILE_2 ...]
 ```
 
 For example:
