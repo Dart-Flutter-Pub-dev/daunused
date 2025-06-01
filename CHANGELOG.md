@@ -33,3 +33,7 @@
 ## [1.6.1] - 2024-02-14
 
 * Fix typo
+
+## [1.7.0] - 2025-06-01
+
+* Detecting unused functions

@@ -104,7 +104,7 @@ bool _isImportLine(String line) {
   if (line.startsWith('import ') || line.startsWith('part ')) {
     return true;
   } else if (line.startsWith('if (') &&
-      (line.endsWith('.dart\'') || line.endsWith('.dart\';'))) {
+      (line.endsWith(".dart'") || line.endsWith(".dart';"))) {
     return true;
   } else {
     return false;
