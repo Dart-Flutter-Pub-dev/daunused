@@ -5,3 +5,6 @@ homepage: https://github.com/mauriciotogneri/daunused
 
 environment:
   sdk: ">=3.7.2 <4.0.0"
+
+dependencies:
+  analyzer: ^7.4.5
