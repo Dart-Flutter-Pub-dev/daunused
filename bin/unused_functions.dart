@@ -19,7 +19,7 @@ Future<Map<String, String>> getUnusedFunctions(
         filePath: file.path,
         declaredElements: declaredElements,
         usedElements: usedElements,
-        whitelist: excludedFunctions,
+        excludedFunctions: excludedFunctions,
       ),
     );
   }
@@ -42,17 +42,17 @@ class _MethodVisitor extends RecursiveAstVisitor<void> {
   final String filePath;
   final Map<String, String> declaredElements;
   final Set<String> usedElements;
-  final List<String> whitelist;
+  final List<String> excludedFunctions;
 
   _MethodVisitor({
     required this.filePath,
     required this.declaredElements,
     required this.usedElements,
-    required this.whitelist,
+    required this.excludedFunctions,
   });
 
   void _addDeclaredElement(String name) {
-    if (!name.startsWith('_') && !whitelist.contains(name)) {
+    if (!name.startsWith('_') && !excludedFunctions.contains(name)) {
       declaredElements[name] = filePath;
     }
   }

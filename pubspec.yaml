@@ -1,6 +1,6 @@
 name: daunused
 description: A Dart package that checks for unused files in your project.
-version: 1.7.0
+version: 1.7.2
 homepage: https://github.com/mauriciotogneri/daunused
 
 environment:
