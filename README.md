@@ -7,7 +7,7 @@ A _Dart_ package that checks for unused files in your project.
 Add the following dependency to your `pubspec.yaml`:
 
 ```yaml
-dev_dependencies 1.7.3
+dev_dependencies 1.7.4
 ```
 
 #### Run the checker
@@ -19,5 +19,5 @@ flutter pub run daunused:daunused.dart ROOT_FOLDER [EXCLUDED_FILE_1, EXCLUDED_FI
 For example:
 
 ```bash
-flutter pub run daunused:daunused.dart lib lib/main.dart,utils/* ==,build
+flutter pub run daunused:daunused.dart lib "lib/main.dart,utils/*" "==,build"
 ```

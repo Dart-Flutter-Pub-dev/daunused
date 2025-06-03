@@ -41,3 +41,7 @@
 ## [1.7.3] - 2025-06-03
 
 - Improve unused function detection
+
+## [1.7.4] - 2025-06-03
+
+- Skipping overridden functions and methods

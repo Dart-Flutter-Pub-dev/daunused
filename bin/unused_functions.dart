@@ -65,25 +65,36 @@ class _MethodVisitor extends RecursiveAstVisitor<void> {
     usedElements.add(name);
   }
 
+  bool _isOverriden(AnnotatedNode node) =>
+      node.metadata.any((Annotation m) => m.name.name == 'override');
+
   @override
   void visitMethodDeclaration(MethodDeclaration node) {
-    final String name = node.name.lexeme;
-    _addDeclaredElement(name);
+    if (!_isOverriden(node)) {
+      final String name = node.name.lexeme;
+      _addDeclaredElement(name);
+    }
+
     super.visitMethodDeclaration(node);
   }
 
   @override
   void visitFunctionDeclaration(FunctionDeclaration node) {
-    final String name = node.name.lexeme;
-    _addDeclaredElement(name);
+    if (!_isOverriden(node)) {
+      final String name = node.name.lexeme;
+      _addDeclaredElement(name);
+    }
+
     super.visitFunctionDeclaration(node);
   }
 
   @override
   void visitFieldDeclaration(FieldDeclaration node) {
     for (final VariableDeclaration varDecl in node.fields.variables) {
-      final String name = varDecl.name.lexeme;
-      _addDeclaredElement(name);
+      if (!_isOverriden(varDecl)) {
+        final String name = varDecl.name.lexeme;
+        _addDeclaredElement(name);
+      }
     }
     super.visitFieldDeclaration(node);
   }
