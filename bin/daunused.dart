@@ -27,6 +27,7 @@ Future<void> main(List<String> args) async {
 
   final Map<String, String> unusedFunctions = await getUnusedFunctions(
     files,
+    excludedFiles,
     excludedFunctions,
   );
 
@@ -73,6 +74,24 @@ List<String> _excludedFunctions(List<String> args) =>
 
 String basename(File file) =>
     Uri.parse(file.path).path.split(Platform.pathSeparator).last;
+
+bool isExcluded(File file, List<String> excludedFiles) {
+  final String uri = file.uri.toString();
+
+  if (excludedFiles.contains(uri)) {
+    return true;
+  } else {
+    for (final String excludedFile in excludedFiles) {
+      final RegExp exp = RegExp(excludedFile);
+
+      if (exp.hasMatch(uri)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+}
 
 void printError(String message) {
   stderr.writeln('\x1B[31m$message\x1B[0m');

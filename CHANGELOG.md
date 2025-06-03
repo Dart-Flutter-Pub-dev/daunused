@@ -37,3 +37,7 @@
 ## [1.7.2] - 2025-06-01
 
 - Detecting unused functions
+
+## [1.7.3] - 2025-06-03
+
+- Improve unused function detection

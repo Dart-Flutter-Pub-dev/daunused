@@ -8,30 +8,12 @@ Future<List<File>> getUnusedFiles(
   final List<File> result = <File>[];
 
   for (final File file in files) {
-    if (!_isExcluded(file, excludedFiles) && await _isNotUsed(file, files)) {
+    if (!isExcluded(file, excludedFiles) && await _isNotUsed(file, files)) {
       result.add(file);
     }
   }
 
   return result;
-}
-
-bool _isExcluded(File file, List<String> excludedFiles) {
-  final String uri = file.uri.toString();
-
-  if (excludedFiles.contains(uri)) {
-    return true;
-  } else {
-    for (final String excludedFile in excludedFiles) {
-      final RegExp exp = RegExp(excludedFile);
-
-      if (exp.hasMatch(uri)) {
-        return true;
-      }
-    }
-
-    return false;
-  }
 }
 
 Future<bool> _isNotUsed(File file, List<File> files) async {

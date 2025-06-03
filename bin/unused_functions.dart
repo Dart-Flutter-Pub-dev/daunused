@@ -2,26 +2,30 @@ import 'dart:io';
 import 'package:analyzer/dart/analysis/utilities.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
+import './daunused.dart';
 
 Future<Map<String, String>> getUnusedFunctions(
   List<File> files,
+  List<String> excludedFiles,
   List<String> excludedFunctions,
 ) async {
   final Map<String, String> declaredElements = <String, String>{};
   final Set<String> usedElements = <String>{};
 
   for (final File file in files) {
-    final String content = await file.readAsString();
-    final CompilationUnit unit =
-        parseString(content: content, path: file.path).unit;
-    unit.visitChildren(
-      _MethodVisitor(
-        filePath: file.path,
-        declaredElements: declaredElements,
-        usedElements: usedElements,
-        excludedFunctions: excludedFunctions,
-      ),
-    );
+    if (!isExcluded(file, excludedFiles)) {
+      final String content = await file.readAsString();
+      final CompilationUnit unit =
+          parseString(content: content, path: file.path).unit;
+      unit.visitChildren(
+        _MethodVisitor(
+          filePath: file.path,
+          declaredElements: declaredElements,
+          usedElements: usedElements,
+          excludedFunctions: excludedFunctions,
+        ),
+      );
+    }
   }
 
   final Map<String, String> result = <String, String>{};
