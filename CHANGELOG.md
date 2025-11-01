@@ -46,6 +46,6 @@
 
 - Skipping overridden functions and methods
 
-## [1.8.0] - 2025-11-01
+## [1.8.1] - 2025-11-01
 
 - Using latest analyzer package
