@@ -45,3 +45,7 @@
 ## [1.7.4] - 2025-06-03
 
 - Skipping overridden functions and methods
+
+## [1.8.0] - 2025-11-01
+
+- Using latest analyzer package

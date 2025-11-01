@@ -1,7 +1,7 @@
 name: daunused_example
 description: Example code for the daunused library.
-version: 1.7.4
+version: 1.8.0
 homepage: https://github.com/mauriciotogneri/daunused
 
 environment:
-  sdk: ">=3.7.2 <4.0.0"
+  sdk: ">=3.9.2 <4.0.0"
