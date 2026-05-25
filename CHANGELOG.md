@@ -49,3 +49,7 @@
 ## [1.8.1] - 2025-11-01
 
 - Using latest analyzer package
+
+## [1.9.0] - 2026-05-25
+
+- Using latest analyzer package

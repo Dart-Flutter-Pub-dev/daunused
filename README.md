@@ -7,7 +7,7 @@ A _Dart_ package that checks for unused files in your project.
 Add the following dependency to your `pubspec.yaml`:
 
 ```yaml
-dev_dependencies 1.8.1
+daunused: 1.9.0
 ```
 
 #### Run the checker
